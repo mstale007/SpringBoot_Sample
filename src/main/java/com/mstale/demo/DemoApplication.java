@@ -5,15 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages={"com.mstale"})
+@RestController
 public class DemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-	@RequestMapping("/")
-	public String home() {
-	  return "Hello Docker World!";
+	@GetMapping("/")
+	public String hello(@RequestParam(value = "name", defaultValue = "Mr.Stark!") String name) {
+		return String.format("Welcome %s!", name);
 	}
 
 }

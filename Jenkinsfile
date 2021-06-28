@@ -4,26 +4,24 @@ pipeline {
     stages {
         stage('Package to .jar') {
             steps {
-                echo 'Starting.. Running ${BUILD_ID} on ${JENKINS_URL}'
-                sh 'mvn package'
+                echo 'Starting.. Running %BUILD_ID% on %JENKINS_URL%'
+                bat 'mvn install'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
-                sh 'mvn deploy'
+                bat 'cd target && java -jar demo-0.0.1-SNAPSHOT.jar' //Try archive 'target*//*.jar'
             }
         }
     }
     post{
         always{
-            echo "Done with everything!"
+            echo "Done with everything! Deployed on localhost:9090"
             //mail bcc: '', body: 'Yo Dawg!', cc: '', from: '', replyTo: '', subject: 'Test Mail Jenkins #01', to: 'mstale20@gmail.com'
         }
     }
