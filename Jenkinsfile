@@ -5,12 +5,12 @@ pipeline {
         stage('Package to .jar') {
             steps {
                 echo 'Starting.. Running %BUILD_ID% on %JENKINS_URL%'
-                bat 'mvn install'
+                bat 'mvnw install'
             }
         }
         stage('Test') {
             steps {
-                bat 'mvn test'
+                bat 'mvnw test'
             }
         }
         stage('Deploy') {
