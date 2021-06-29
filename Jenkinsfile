@@ -2,14 +2,19 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean') {
+            steps {
+                bat 'mvn clean'
+            }
+        }
         stage('Package to .jar') {
             steps {
-                bat 'mvnw install'
+                bat 'mvn install'
             }
         }
         stage('Test') {
             steps {
-                bat 'mvnw test'
+                bat 'mvn test'
             }
         }
         stage('Deploy') {
