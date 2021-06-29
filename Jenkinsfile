@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Package to .jar') {
             steps {
-                echo 'Starting.. Running %BUILD_ID% on %JENKINS_URL%'
                 bat 'mvnw install'
             }
         }
