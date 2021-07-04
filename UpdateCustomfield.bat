@@ -1,0 +1,1 @@
+curl --request GET "https://mstale-test.atlassian.net/rest/api/latest/issue/CICD-13" --header "Authorization: Basic bXN0YWxlMjBAZ21haWwuY29tOkhKbFRSQ1B3YmRHMnhabVBIbnhPQUEyRA==" --header "Content-Type:application/json" --data-raw "{'fields': {'customfield_10034':['Queued']}}"
